@@ -1,2 +1,2 @@
 # NGB_tests
-Here I store shell deployment scripts for NGB and tests
+Here I store shell scripts for the NGB deployment and some tests.
