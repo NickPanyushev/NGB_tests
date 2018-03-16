@@ -62,7 +62,7 @@ if [ -d $NAME* ]; then
 else
   wget https://github.com/epam/NGB/archive/$COMMIT.zip || exit 1
   unzip $COMMIT.zip &> /dev/null && rm $COMMIT.zip
-  mv NGB-$COMMIT* $NAME 
+  mv NGB-$COMMIT $NAME
 
 fi
 
@@ -132,7 +132,7 @@ else
     PORT="--server.port=8080"
 fi
 
-nohup sudo java -Xmx6G -jar $WORK_DIR/$NAME/dist/catgenome.jar --conf=$WORK_DIR/$NAME/config $PORT &
+nohup java -Xmx6G -jar $WORK_DIR/$NAME/dist/catgenome.jar --conf=$WORK_DIR/$NAME/config $PORT &
 
 #Checking the successful start of the jar file
 
@@ -153,7 +153,7 @@ echo "Jar started successfully"
 cd $WORK_DIR/$NAME/
 echo "Building CLI"
 ./gradlew buildCli || echo "CLI BUILD FAILED" exit 1
-tar -xzvf ./dist/ngb-cli.tar.gz
+tar -xvf ./dist/ngb-cli.tar.gz
 
 #Adding cli to $PATH for convenience
 export PATH=$WORK_DIR/$NAME/ngb-cli/bin/:$PATH
